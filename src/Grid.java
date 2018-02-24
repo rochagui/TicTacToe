@@ -9,6 +9,7 @@ public class Grid {
     public static final int PADDING = 10;
     public static final int CELL_SIZE = 200;
     private Cell[][] cells;
+    private boolean winner = false;
 
 
     public Grid(int cols, int rows) {
@@ -18,6 +19,7 @@ public class Grid {
         init();
 
     }
+
 
 
     private void createGrid(){
@@ -42,8 +44,6 @@ public class Grid {
         Line lineHoriz2 = new Line(10,400,600,400);
         lineHoriz2.setColor(Color.BLACK);
         lineHoriz2.draw();
-
-
     }
 
     private void init(){
@@ -52,12 +52,52 @@ public class Grid {
         for (int col = 0; col < cols; col++){
             for(int row = 0; row < rows; row++){
                 cells[col][row] = new Cell(col * CELL_SIZE + PADDING, row * CELL_SIZE + PADDING, CELL_SIZE, CELL_SIZE);
+
             }
         }
 
-
     }
 
+    public boolean isWinner() {
+
+
+                if (cells[0][0].isPaintedBlue()  && cells[1][0].isPaintedBlue() && cells[2][0].isPaintedBlue()) {
+                    return winner;
+                }
+
+
+                if (cells[0][1].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][1].isPaintedBlue()) {
+                    return winner = true;
+                }
+
+
+                if (cells[0][2].isPaintedBlue() && cells[1][2].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
+                    return winner = true;
+                }
+
+                if (cells[0][0].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
+                return winner = true;
+                }
+
+                if (cells[0][2].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][0].isPaintedBlue()) {
+                return winner = true;
+                }
+
+                if (cells[0][0].isPaintedBlue() && cells[0][1].isPaintedBlue() && cells[0][2].isPaintedBlue()) {
+                return winner = true;
+                }
+
+                if (cells[1][0].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[1][2].isPaintedBlue()) {
+                return winner = true;
+                }
+
+                if (cells[2][0].isPaintedBlue() && cells[2][1].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
+                return winner = true;
+                }
+
+        return false;
+
+        }
 
     public int getCols(){
         return cols;

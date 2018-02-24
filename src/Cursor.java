@@ -1,6 +1,8 @@
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import java.awt.*;
+
 public class Cursor  {
 
     private int col;
@@ -55,10 +57,10 @@ public class Cursor  {
 
     }
 
-    public void space(){
+    public void space()  {
 
         Cell cell = grid.getCell(col,row);
-        if (!cell.isPainted()){
+        if (!cell.isPainted() && grid.isWinner() == false){
             cell.paint("blue");
             gameTurn();
         } else {
@@ -70,11 +72,17 @@ public class Cursor  {
     private void gameTurn() {
 
         Cell cell = grid.getCell((int) Math.floor(Math.random() * 3),(int) Math.floor(Math.random() * 3));
-        if (!cell.isPainted()){
-            cell.paint("green");
-        }else {
-            gameTurn();
+        try {
+            if (!cell.isPainted() && grid.isWinner() == false){
+                cell.paint("green");
+            }else {
+                gameTurn();
+            }
+        } catch (StackOverflowError stackOverflowError){
+            System.out.println("ERRO!!!");
+
         }
+
 
     }
     }
