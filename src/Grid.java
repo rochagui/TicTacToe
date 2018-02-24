@@ -9,7 +9,8 @@ public class Grid {
     public static final int PADDING = 10;
     public static final int CELL_SIZE = 200;
     private Cell[][] cells;
-    private boolean winner = false;
+    private boolean winnerBlue = false;
+    private boolean winnerGreen = false;
 
 
     public Grid(int cols, int rows) {
@@ -58,46 +59,86 @@ public class Grid {
 
     }
 
-    public boolean isWinner() {
+    public boolean isWinnerBlue() {
 
 
                 if (cells[0][0].isPaintedBlue()  && cells[1][0].isPaintedBlue() && cells[2][0].isPaintedBlue()) {
-                    return winner;
+                    return winnerBlue = true;
                 }
 
 
                 if (cells[0][1].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][1].isPaintedBlue()) {
-                    return winner = true;
+                    return winnerBlue = true;
                 }
 
 
                 if (cells[0][2].isPaintedBlue() && cells[1][2].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
-                    return winner = true;
+                    return winnerBlue = true;
                 }
 
                 if (cells[0][0].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
-                return winner = true;
+                return winnerBlue = true;
                 }
 
                 if (cells[0][2].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[2][0].isPaintedBlue()) {
-                return winner = true;
+                return winnerBlue = true;
                 }
 
                 if (cells[0][0].isPaintedBlue() && cells[0][1].isPaintedBlue() && cells[0][2].isPaintedBlue()) {
-                return winner = true;
+                return winnerBlue = true;
                 }
 
                 if (cells[1][0].isPaintedBlue() && cells[1][1].isPaintedBlue() && cells[1][2].isPaintedBlue()) {
-                return winner = true;
+                return winnerBlue = true;
                 }
 
                 if (cells[2][0].isPaintedBlue() && cells[2][1].isPaintedBlue() && cells[2][2].isPaintedBlue()) {
-                return winner = true;
+                return winnerBlue = true;
                 }
 
         return false;
 
         }
+
+    public boolean isWinnerGreen() {
+
+
+        if (cells[0][0].isPaintedGreen()  && cells[1][0].isPaintedGreen() && cells[2][0].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+
+        if (cells[0][1].isPaintedGreen() && cells[1][1].isPaintedGreen() && cells[2][1].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+
+        if (cells[0][2].isPaintedGreen() && cells[1][2].isPaintedGreen() && cells[2][2].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+        if (cells[0][0].isPaintedGreen() && cells[1][1].isPaintedGreen() && cells[2][2].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+        if (cells[0][2].isPaintedGreen() && cells[1][1].isPaintedGreen() && cells[2][0].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+        if (cells[0][0].isPaintedGreen() && cells[0][1].isPaintedGreen() && cells[0][2].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+        if (cells[1][0].isPaintedGreen() && cells[1][1].isPaintedGreen() && cells[1][2].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+
+        if (cells[2][0].isPaintedGreen() && cells[2][1].isPaintedGreen() && cells[2][2].isPaintedGreen()) {
+            return winnerGreen = true;
+        }
+        return false;
+
+    }
 
     public int getCols(){
         return cols;
